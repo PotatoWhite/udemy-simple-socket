@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group 'me.potato'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    rsocketVersion = '1.1.2'
+    jacksonVersion = '2.13.3'
+    junitVersion = '5.9.0'
+    reactorBomVersion = '2020.0.22'
+}
+
+dependencies {
+    implementation("io.netty:netty-resolver-dns-native-macos:4.1.79.Final:osx-aarch_64")
+
+    implementation(platform("io.projectreactor:reactor-bom:${reactorBomVersion}"))
+
+    implementation "io.rsocket:rsocket-core:${rsocketVersion}"
+    implementation "io.rsocket:rsocket-transport-netty:${rsocketVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testImplementation "io.projectreactor:reactor-test"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+
+test {
+    useJUnitPlatform()
+}

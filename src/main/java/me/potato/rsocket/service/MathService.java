@@ -1,4 +1,4 @@
-package me.potato.rsocket;
+package me.potato.rsocket.service;
 
 import io.rsocket.Payload;
 import io.rsocket.RSocket;
